@@ -26,8 +26,9 @@ class ProductItem extends StatelessWidget {
               arguments: product.id,
             );
           },
-          child: Image.network(
-            product.imageUrl,
+          child: FadeInImage(
+            placeholder: AssetImage('assets/images/product-placeholder.png'),
+            image: NetworkImage(product.imageUrl),
             fit: BoxFit.cover,
           ),
         ),
@@ -35,14 +36,14 @@ class ProductItem extends StatelessWidget {
           backgroundColor: Colors.black87,
           leading: Consumer<Product>(
             builder: (ctx, product, _) => IconButton(
-                  icon: Icon(
-                    product.isFavorite ? Icons.favorite : Icons.favorite_border,
-                  ),
-                  color: Theme.of(context).accentColor,
-                  onPressed: () {
-                    product.toggleFavoriteStatus();
-                  },
-                ),
+              icon: Icon(
+                product.isFavorite ? Icons.favorite : Icons.favorite_border,
+              ),
+              color: Theme.of(context).accentColor,
+              onPressed: () {
+                product.toggleFavoriteStatus();
+              },
+            ),
           ),
           title: Text(
             product.title,
