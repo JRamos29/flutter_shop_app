@@ -24,10 +24,12 @@ class MyApp extends StatelessWidget {
           value: Auth(),
         ),
         ChangeNotifierProxyProvider<Auth, Products>(
-          create: (_) => Products(null,
+          create: (_) => Products(null, null,
               []), //error here saying 3 positional arguments expected,but 0 found.
           update: (ctx, auth, previusProducts) => Products(
-              auth.token, previusProducts == null ? [] : previusProducts.items),
+              auth.token,
+              auth.userId,
+              previusProducts == null ? [] : previusProducts.items),
         ),
         ChangeNotifierProvider.value(
           value: Cart(),
