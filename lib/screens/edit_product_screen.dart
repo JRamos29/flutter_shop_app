@@ -103,17 +103,17 @@ class _EditProductScreenState extends State<EditProductScreen> {
         await showDialog(
           context: context,
           builder: (ctx) => AlertDialog(
-            title: Text('An error occurred!'),
-            content: Text('Something went wrong.'),
-            actions: <Widget>[
-              FlatButton(
-                child: Text('Okay'),
-                onPressed: () {
-                  Navigator.of(ctx).pop();
-                },
-              )
-            ],
-          ),
+                title: Text('An error occurred!'),
+                content: Text('Something went wrong.'),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text('Okay'),
+                    onPressed: () {
+                      Navigator.of(ctx).pop();
+                    },
+                  )
+                ],
+              ),
         );
       }
       // finally {
@@ -179,8 +179,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       initialValue: _initValues['price'],
                       decoration: InputDecoration(labelText: 'Price'),
                       textInputAction: TextInputAction.next,
-                      keyboardType:
-                          TextInputType.numberWithOptions(decimal: true),
+                      keyboardType: TextInputType.number,
                       focusNode: _priceFocusNode,
                       onFieldSubmitted: (_) {
                         FocusScope.of(context)
@@ -266,9 +265,6 @@ class _EditProductScreenState extends State<EditProductScreen> {
                             textInputAction: TextInputAction.done,
                             controller: _imageUrlController,
                             focusNode: _imageUrlFocusNode,
-                            onEditingComplete: () {
-                              setState(() {});
-                            },
                             onFieldSubmitted: (_) {
                               _saveForm();
                             },
