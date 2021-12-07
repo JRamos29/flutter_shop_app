@@ -14,6 +14,7 @@
 - Built-in Animation & Transition Widgets (AnimatedContainer, Hero, Slivers)
 - Implementing Custom Route Transitions;
 - Persisting local data with [shared_preferences](https://pub.dev/packages/shared_preferences) package;
+- Defined ENV variables with [flutter_dotenv](https://pub.dev/packages/flutter_dotenv) package;
 
 #
 
