@@ -12,7 +12,8 @@
 - Handling Authentication Errors
 - Forms & Validating User Input;
 - Built-in Animation & Transition Widgets (AnimatedContainer, Hero, Slivers)
-- Implementing Custom Route Transitions
+- Implementing Custom Route Transitions;
+- Persisting local data with [shared_preferences](https://pub.dev/packages/shared_preferences) package;
 
 #
 
