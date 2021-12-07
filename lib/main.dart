@@ -18,7 +18,6 @@ import './helpers/custom_route.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: '.env');
-  print(dotenv.env['FIREBASE_AUTH_KEY']);
   runApp(MyApp());
 }
 
