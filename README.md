@@ -1,16 +1,23 @@
 # flutter_shop_app
 
-A new Flutter project.
+## This is a small and simple Flutter app of a Shop, using the concepts of State Management with [Provider/ChangeNotifier](https://pub.dev/packages/provider). The app also includes other features such as:
 
-## Getting Started
+- Working with Providers & Listeners;
+- Using Consumers (instead of "Provider.of" only);
+- Working with Multiple Providers;
+- Using the ProxyProvider (from Provider) and attaching the token to outgoing Http Requests
+- Using ScaffoldMessenger for Snackbars;
+- Sending and Fetching (Http Requests) data from [Firebase](https://firebase.google.com/) using the [Http package](https://pub.dev/packages/http);
+- Authentication with Firebase
+- Handling Authentication Errors
+- Forms & Validating User Input;
+- Built-in Animation & Transition Widgets (AnimatedContainer, Hero, Slivers)
+- Implementing Custom Route Transitions
 
-This project is a starting point for a Flutter application.
+#
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
+For help getting started with Flutter, view the
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+#
