@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class Product with ChangeNotifier {
@@ -29,8 +30,9 @@ class Product with ChangeNotifier {
     final oldStatus = isFavorite;
     isFavorite = !isFavorite;
     notifyListeners();
+    final FIREBASE_RTDB_URL = dotenv.env['FIREBASE_RTDB_URL'];
     final url = Uri.parse(
-        'https://flutter-myshop-app-73d79-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json?auth=$token');
+        '$FIREBASE_RTDB_URL/userFavorites/$userId/$id.json?auth=$token');
     try {
       final response = await http.put(
         url,

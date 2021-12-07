@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/http_exception.dart';
@@ -73,10 +74,11 @@ class Products with ChangeNotifier {
   // }
 
   Future<void> fetchAndSetProducts([bool filterByUser = false]) async {
+    final FIREBASE_RTDB_URL = dotenv.env['FIREBASE_RTDB_URL'];
     final filterString =
         filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
     var url = Uri.parse(
-        'https://flutter-myshop-app-73d79-default-rtdb.firebaseio.com/products.json?auth=$authToken&$filterString');
+        '$FIREBASE_RTDB_URL/products.json?auth=$authToken&$filterString');
     try {
       final response = await http.get(url);
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
@@ -84,7 +86,7 @@ class Products with ChangeNotifier {
         return;
       }
       url = Uri.parse(
-          'https://flutter-myshop-app-73d79-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken');
+          '$FIREBASE_RTDB_URL/userFavorites/$userId.json?auth=$authToken');
       final favoriteResponse = await http.get(url);
       final favoriteData = json.decode(favoriteResponse.body);
       final List<Product> loadedProducts = [];
@@ -107,8 +109,8 @@ class Products with ChangeNotifier {
   }
 
   Future<void> addProduct(Product product) async {
-    final url = Uri.parse(
-        'https://flutter-myshop-app-73d79-default-rtdb.firebaseio.com/products.json?auth=$authToken');
+    final FIREBASE_RTDB_URL = dotenv.env['FIREBASE_RTDB_URL'];
+    final url = Uri.parse('$FIREBASE_RTDB_URL/products.json?auth=$authToken');
     try {
       final response = await http.post(
         url,
@@ -137,10 +139,11 @@ class Products with ChangeNotifier {
   }
 
   Future<void> updateProduct(String id, Product newProduct) async {
+    final FIREBASE_RTDB_URL = dotenv.env['FIREBASE_RTDB_URL'];
     final prodIndex = _items.indexWhere((prod) => prod.id == id);
     if (prodIndex >= 0) {
-      final url = Uri.parse(
-          'https://flutter-myshop-app-73d79-default-rtdb.firebaseio.com/products/$id.json?auth=$authToken');
+      final url =
+          Uri.parse('$FIREBASE_RTDB_URL/products/$id.json?auth=$authToken');
       await http.patch(url,
           body: json.encode({
             'title': newProduct.title,
@@ -156,8 +159,9 @@ class Products with ChangeNotifier {
   }
 
   Future<void> deleteProduct(String id) async {
-    final url = Uri.parse(
-        'https://flutter-myshop-app-73d79-default-rtdb.firebaseio.com/products/$id.json?auth=$authToken');
+    final FIREBASE_RTDB_URL = dotenv.env['FIREBASE_RTDB_URL'];
+    final url =
+        Uri.parse('$FIREBASE_RTDB_URL/products/$id.json?auth=$authToken');
     final existingProductIndex = _items.indexWhere((prod) => prod.id == id);
     var existingProduct = _items[existingProductIndex];
     _items.removeAt(existingProductIndex);
