@@ -1,4 +1,4 @@
-# flutter_shop_app
+# My Shop (Flutter App)
 
 ## This is a small and simple Flutter app of a Shop, using the concepts of State Management with [Provider/ChangeNotifier](https://pub.dev/packages/provider). The app also includes other features such as:
 
