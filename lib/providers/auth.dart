@@ -33,10 +33,10 @@ class Auth with ChangeNotifier {
 
   Future<void> _authenticate(
       String email, String password, String urlSegment) async {
-    final FIREBASE_AUTH_KEY = dotenv.env['FIREBASE_AUTH_KEY'];
+    final FIREBASE_API_KEY = dotenv.env['FIREBASE_API_KEY'];
 
     final url = Uri.parse(
-        'https://www.googleapis.com/identitytoolkit/v3/relyingparty/$urlSegment?key=$FIREBASE_AUTH_KEY');
+        'https://www.googleapis.com/identitytoolkit/v3/relyingparty/$urlSegment?key=$FIREBASE_API_KEY');
     try {
       final response = await http.post(
         url,
